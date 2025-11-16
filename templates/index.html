@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Ranking System - AI-Powered Resume Screening</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="#4F46E5"/>
+                    <path d="M12 14h16M12 20h16M12 26h10" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <h1>Resume Ranking System</h1>
+            </div>
+            <p class="tagline">AI-Powered Resume Screening & Ranking</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Upload PDF Form -->
+            <div id="upload-tab" class="tab-content active">
+                <form id="upload-form">
+                    <!-- Job Requirements -->
+                    <div class="form-group">
+                        <label for="job-requirements">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/>
+                                <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"/>
+                            </svg>
+                            Job Requirements / Description
+                        </label>
+                        <textarea 
+                            id="job-requirements" 
+                            name="job_requirements" 
+                            rows="6" 
+                            placeholder="Example: Software Engineer with 5 years experience in Python, Django, and React. Built scalable web applications and RESTful APIs. Experience with AWS, Docker, and CI/CD pipelines. Strong background in algorithms and data structures."
+                            required
+                        ></textarea>
+                        <small>Be specific about required skills, experience, and technologies</small>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="form-group">
+                        <label for="resume-files">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z"/>
+                            </svg>
+                            Upload Resume PDFs
+                        </label>
+                        <div class="file-upload-area" id="file-upload-area">
+                            <input 
+                                type="file" 
+                                id="resume-files" 
+                                name="resumes" 
+                                accept=".pdf" 
+                                multiple 
+                                required
+                            >
+                            <div class="upload-placeholder">
+                                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+                                    <path d="M24 8v24M16 20l8-8 8 8M8 32v8h32v-8" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <p><strong>Click to upload</strong> or drag and drop</p>
+                                <p class="small">PDF files only (Max 16MB per file)</p>
+                            </div>
+                            <div id="file-list" class="file-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-primary" id="submit-btn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                        </svg>
+                        Rank Resumes
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Processing resumes... Please wait</p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results" class="results hidden">
+            <!-- Results will be inserted here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Resume Ranking System | Powered by AI & Machine Learning</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
